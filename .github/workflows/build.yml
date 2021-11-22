@@ -45,5 +45,6 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"colin-mueller-sonarsource_dotnet-framework-docker-samples" /o:"colin-mueller-sonarsource" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          MSBuild.exe -t:restore dotnetapp-4.6.2/dotnetapp-4.6.2.sln
           MSBuild.exe dotnetapp-4.6.2/dotnetapp-4.6.2.sln
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
